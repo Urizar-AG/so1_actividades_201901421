@@ -1,0 +1,8 @@
+[Unit]
+Description=SO1_Actividad4_201901421
+
+[Service]
+ExecStart=/bin/bash /home/urizar-ag/Desktop/so1_actividades_201901421/actividad3/script.sh
+
+[Install]
+WantedBy=multi-user.target
