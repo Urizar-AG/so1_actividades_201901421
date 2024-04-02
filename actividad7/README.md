@@ -28,11 +28,19 @@ El CFS (Completely Fairy Scheduler), en español el Planificador Completamente J
 ## Funcionamiento  
 
 ```  
-El CFS Scheduler funciona evaluando los nice value y vruntime. El nice value es un valor numérico que puede ir de -20 hasta + 19, la tarea con el nice value de menor valor tiene una prioridad más alta que las tareas un nice value más alto.  
+El CFS Scheduler funciona evaluando los nice value y vruntime. El nice value es un valor numérico que puede ir de -20
+hasta + 19, la tarea con el nice value menor  tienen una prioridad más alta que las tareas un nice value más alto.  
 
-Para las tareas que tienen un nice value de 0 el valor de vruntime será igual que el valor de run time real, para las tareas con una prioridad baja el vruntime será mayor que el run time real, mientras que para aquellas tareas con una prioridad alta el vruntime será menor que el run time real. Entonces para decidir que tarea debe ser la siguiente en ser atendida el scheduler simplemente selecciona que tarea es la que tiene el vruntime más pequeño. Adicionalmente una tarea con prioridad alta puede adelantarse a una tarea con prioridad más baja.  
+Para las tareas que tienen un nice value de 0 el valor de vruntime será igual que el valor de run time real, para las
+tareas con una prioridad baja el vruntime será mayor que el run time real, mientras que para aquellas tareas con una
+prioridad alta el vruntime será menor que el run time real. Entonces para decidir que tarea debe ser la siguiente en ser
+atendida el scheduler simplemente selecciona que tarea es la que tiene el vruntime más pequeño. Adicionalmente una tarea
+con prioridad alta puede adelantarse a una tarea con prioridad más baja.  
   
-Adicionalmente el CFS admite el balanceamiento de carga utilizando una técnica que se encarga de igualar la carga entre los núcleos del CPU. Está técnica utilizada también se encarga de minimizar la migración de hilos threads.  
+Adicionalmente el CFS admite el balanceamiento de carga utilizando una técnica que se encarga de igualar la carga entre
+los núcleos del CPU. Está técnica utilizada también se encarga de minimizar la migración de hilos threads.  
   
-CFS define la carga de un proceso como la combinación de la prioridad de los subprocesos y la tasa promedio de uso del CPU. Utilizando esta métrica la carga para una cola es entonces, la suma de todas las cargas de los procesos que están en la cola, por lo que el balance de cargas consiste en asegurarse que cada una de las colas tenga la misma cantidad de carga.
+CFS define la carga de un proceso como la combinación de la prioridad de los subprocesos y la tasa promedio de uso del
+CPU. Utilizando esta métrica la carga para una cola es entonces, la suma de todas las cargas de los procesos que están
+en  cola, por lo que el balance de cargas consiste en asegurarse que cada las colas tenga la misma cantidad de carga.
 ```
